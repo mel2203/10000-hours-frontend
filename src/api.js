@@ -36,3 +36,6 @@ export const createProfile = (body) =>
 export const getPosts = () => request("/posts");
 
 export const getProfile = (userId) => request(`/profiles/${userId}`);
+
+export const createPost = (body) =>
+  request("/posts", { method: "POST", body: JSON.stringify(body) });
