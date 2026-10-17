@@ -1,0 +1,546 @@
+/* The palette and font defaults keep the whole app calm and consistent. */
+:root {
+  --bg: #0F1A2B;
+  --bg-deep: #0A1220;
+  --card: #16243A;
+  --line: #2C3E5A;
+  --text: #F3EBDD;
+  --muted: #B9AE9B;
+  --gold: #B08D57;
+  --gold-light: #E3C48F;
+  --brown: #8A5E37;
+  color: var(--text);
+  background: var(--bg);
+  font-family: "Lora", Georgia, serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Base layout and text styles support every page and screen size. */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  min-width: 360px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: "Lora", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+a {
+  color: var(--gold-light);
+  text-underline-offset: 4px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Focus states remain visible while matching the gold palette. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+/* Buttons use clear, restrained fills and bookish display lettering. */
+button,
+.primary-button {
+  min-height: 44px;
+  padding: 0.55rem 1.15rem;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  color: var(--bg);
+  background: var(--gold);
+  cursor: pointer;
+  font: 700 18px "Cormorant Garamond", Georgia, serif;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+button:hover,
+.primary-button:hover {
+  border-color: var(--gold-light);
+  background: var(--gold-light);
+}
+
+.ghost-button {
+  border-color: transparent;
+  color: var(--gold-light);
+  background: transparent;
+}
+
+.filter-chip {
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  color: var(--gold-light);
+  background: transparent;
+}
+
+.filter-chip.active {
+  color: var(--bg);
+  background: var(--gold);
+}
+
+/* Main headings and page shells share a centred, generous reading width. */
+.page-title {
+  margin-bottom: 0.65rem;
+  font-size: clamp(2.4rem, 6vw, 3.5rem);
+}
+
+.page-heading {
+  grid-column: 1 / -1;
+  margin: 0 0 1.75rem;
+}
+
+.page-intro {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.page-shell {
+  width: min(100% - 2rem, 1180px);
+  margin: 2.5rem auto 4rem;
+}
+
+.section-title {
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.8rem, 4vw, 2.35rem);
+}
+
+/* Fields use the page surface and a measured gold focus outline. */
+.form-input,
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--text);
+  background: var(--bg);
+  font: 400 1rem "Lora", Georgia, serif;
+}
+
+.form-input::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.form-input:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--gold);
+  outline: 1px solid var(--gold);
+}
+
+/* Auth screens split the brand panel from a simple form panel. */
+.auth-page {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  background: var(--bg);
+}
+
+.auth-brand {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3rem 1.5rem;
+  background: var(--card);
+  text-align: center;
+}
+
+.auth-book-logo {
+  width: 58px;
+  height: 52px;
+  margin-bottom: 1rem;
+}
+
+.auth-wordmark {
+  margin-bottom: 0.6rem;
+  color: var(--gold-light);
+  font: clamp(32px, 5vw, 64px)/1.1 "Pinyon Script", cursive;
+  white-space: nowrap;
+}
+
+.auth-tagline {
+  margin-bottom: 0;
+  color: var(--muted);
+  font: 600 1.55rem "Cormorant Garamond", Georgia, serif;
+}
+
+.auth-card {
+  display: flex;
+  width: min(100%, 560px);
+  min-height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 6vw, 4.5rem);
+  background: var(--bg);
+}
+
+.auth-card .page-title {
+  margin-bottom: 1.5rem;
+}
+
+.auth-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-form .primary-button {
+  margin-top: 0.35rem;
+}
+
+.auth-switch {
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+}
+
+.auth-switch a {
+  color: var(--gold-light);
+}
+
+/* The navbar pairs an inline book mark with understated page links. */
+.site-nav {
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  display: flex;
+  width: 100%;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem max(1rem, calc((100% - 1180px) / 2));
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-deep);
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--gold-light);
+  font: 34px/1 "Pinyon Script", cursive;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.book-logo {
+  width: 34px;
+  height: 31px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: var(--gold-light);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.book-logo circle {
+  fill: var(--gold-light);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.6rem;
+}
+
+.nav-pill {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 150ms ease;
+}
+
+.nav-pill:hover,
+.nav-pill:focus-visible,
+.nav-pill[aria-current="page"] {
+  border-bottom-color: var(--gold);
+}
+
+.logout-button {
+  min-height: 38px;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  color: var(--gold-light);
+  background: transparent;
+  font-size: 17px;
+}
+
+.logout-button:hover {
+  color: var(--bg);
+  background: var(--gold);
+}
+
+/* Feed pages reserve the requested main and sidebar columns on wide screens. */
+.feed-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  align-items: start;
+  column-gap: 2rem;
+}
+
+.post-list {
+  display: grid;
+  min-width: 0;
+  gap: 1.25rem;
+}
+
+/* Profile details sit in a calm bordered panel above the study posts. */
+.profile-card {
+  margin-bottom: 2.25rem;
+  padding: 1.75rem 2rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  box-shadow: 0 2px 0 var(--bg-deep);
+}
+
+.profile-card .page-title {
+  margin-bottom: 0.8rem;
+  font-size: 44px;
+  overflow-wrap: anywhere;
+}
+
+.profile-bio,
+.profile-city {
+  margin-bottom: 0.45rem;
+  color: var(--muted);
+}
+
+.profile-city {
+  margin-bottom: 0;
+}
+
+/* Posts keep the author, visibility, skill title, and writing easy to scan. */
+.post-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  box-shadow: 0 2px 0 var(--bg-deep);
+}
+
+.post-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-author {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.post-avatar {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--text);
+  background: var(--brown);
+  font: 700 21px "Cormorant Garamond", Georgia, serif;
+}
+
+.post-author-name {
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.post-author-name:hover {
+  color: var(--gold-light);
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.55rem;
+  margin: 0.1rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.post-title {
+  max-width: 45%;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.25rem 0.55rem;
+  border-radius: 3px;
+  color: var(--bg);
+  background: var(--gold);
+  font: 600 12px/1.3 "Lora", Georgia, serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.visibility-badge {
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.post-content {
+  margin-bottom: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.post-image {
+  width: min(100%, 420px);
+  max-height: 420px;
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.hours-number {
+  color: var(--gold-light);
+  font: 700 20px "Cormorant Garamond", Georgia, serif;
+}
+
+/* Loading, error, and empty states are centred and quietly legible. */
+.state-message {
+  width: min(100% - 2rem, 760px);
+  margin: 2rem auto;
+  color: var(--muted);
+  text-align: center;
+}
+
+.loading-state,
+.error-state,
+.empty-state {
+  padding: 1.25rem;
+}
+
+/* Narrow screens stack auth panels, feed columns, and navigation links. */
+@media (max-width: 900px) {
+  .feed-page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .auth-page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .auth-brand {
+    min-height: 40vh;
+    padding: 2rem 1rem;
+  }
+
+  .auth-wordmark {
+    font-size: clamp(32px, 8vw, 54px);
+  }
+
+  .auth-card {
+    min-height: auto;
+    padding: 2.5rem 1.25rem;
+  }
+
+  .site-nav {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.65rem 1rem;
+  }
+
+  .page-shell {
+    width: min(100% - 1.25rem, 1180px);
+    margin-top: 1.5rem;
+  }
+
+  .post-card {
+    padding: 16px;
+  }
+
+  .post-header {
+    flex-direction: column;
+  }
+
+  .profile-card {
+    padding: 1.35rem;
+  }
+
+  .profile-card .page-title {
+    font-size: clamp(34px, 11vw, 44px);
+  }
+}
+
+/* Reduced motion keeps the same styles without movement. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
