@@ -1,0 +1,6 @@
+vercel.json ->
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
+this is because we want to send every path to index.html so react router can take over
+one problem-> when refreshing vercel deployment paths like profile/3 will not exist, so must pass this to index.html 

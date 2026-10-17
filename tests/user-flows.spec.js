@@ -1,7 +1,7 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, process } from "@playwright/test";
 
-const EMAIL = "test@checkpoint2.com";
-const PASSWORD = "hello";
+const EMAIL = process.env.TEST_EMAIL;
+const PASSWORD = process.env.TEST_PASSWORD;
 
 // shared steps so each test doesn't repeat them
 async function login(page) {
@@ -41,13 +41,3 @@ test("user can create a post and see it in the feed", async ({ page }) => {
 });
 
 
-/*
-What each part does:
-
-login(page) is a helper that fills the form and clicks, so the login steps are written once.
-getByPlaceholder, getByRole and getByLabel find elements the way a user would, by what they see.
-expect(...).toBeVisible() waits a few seconds for the thing to appear, then fails if it doesn’t.
-Date.now() in the title makes each run’s post unique, so the test finds the right one.
-
-
-*/
