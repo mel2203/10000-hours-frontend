@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       VITE_API_URL: https://peanutbutterandjelly-backend-production.up.railway.app
+      TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
+      TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
