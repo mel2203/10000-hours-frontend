@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../api";
 import { useAuth } from "../context/AuthContext";
+import { supabase } from "../supabaseClient";
 
 export default function Login() {
   const [form, setForm] = useState({ user_email: "", password: "" });
@@ -11,6 +12,15 @@ export default function Login() {
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function handleGoogle() {
+    setError("");
+    const { error: oauthError } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/auth/callback` },
+    });
+    if (oauthError) setError(oauthError.message);
   }
 
   async function handleSubmit(e) {
@@ -28,7 +38,11 @@ export default function Login() {
   return (
     <main className="auth-page">
       <section className="auth-brand">
-        <svg className="book-logo auth-book-logo" viewBox="0 0 40 36" aria-hidden="true">
+        <svg
+          className="book-logo auth-book-logo"
+          viewBox="0 0 40 36"
+          aria-hidden="true"
+        >
           <path d="M20 10C15 5 8 5 3 7v22c6-2 12-1 17 4m0-23c5-5 12-5 17-3v22c-6-2-12-1-17 4m0-23v23" />
           <circle cx="20" cy="4" r="2" />
           <path d="M20 3v1l1 .6" />
@@ -39,23 +53,28 @@ export default function Login() {
       <section className="auth-card">
         <h1 className="page-title">Welcome back</h1>
         <form className="auth-form" onSubmit={handleSubmit}>
-        <input
-          className="form-input"
-          name="user_email"
-          type="email"
-          placeholder="Email"
-          value={form.user_email}
-          onChange={handleChange}
-        />
-        <input
-          className="form-input"
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-        />
-          <button className="primary-button" type="submit">Log in</button>
+          <input
+            className="form-input"
+            name="user_email"
+            type="email"
+            placeholder="Email"
+            value={form.user_email}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+          />
+          <button className="primary-button" type="submit">
+            Log in
+          </button>
+          <button type="button" onClick={handleGoogle}>
+            Continue with Google
+          </button>
         </form>
         {error && <p className="state-message error-state">{error}</p>}
         <p className="auth-switch">
