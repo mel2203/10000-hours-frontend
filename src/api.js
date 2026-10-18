@@ -39,3 +39,6 @@ export const getProfile = (userId) => request(`/profiles/${userId}`);
 
 export const createPost = (body) =>
   request("/posts", { method: "POST", body: JSON.stringify(body) });
+
+export const googleLogin = (access_token) =>
+  request("/auth/google", { method: "POST", body: JSON.stringify({ access_token }) });
