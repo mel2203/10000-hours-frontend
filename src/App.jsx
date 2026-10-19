@@ -4,7 +4,7 @@ import Signup from "./pages/Signup";
 import Feed from "./pages/ProgressFeed";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Navbar from "./components/Navbar";
+import Layout from "./components/Layout";
 import "./index.css";
 import AuthCallback from "./pages/AuthCallback";
 
@@ -18,20 +18,13 @@ export default function App() {
         path="/"
         element={
           <ProtectedRoute>
-            <Navbar />
-            <Feed />
+            <Layout />
           </ProtectedRoute>
         }
-      />
-      <Route
-        path="/profile/:id"
-        element={
-          <ProtectedRoute>
-            <Navbar />
-            <Profile />
-          </ProtectedRoute>
-        }
-      />
+      >
+        <Route index element={<Feed />} />
+        <Route path="profile/:id" element={<Profile />} />
+      </Route>
     </Routes>
   );
 }
