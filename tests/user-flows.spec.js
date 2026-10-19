@@ -36,8 +36,9 @@ test("user can create a post and see it in the feed", async ({ page }) => {
   await page.getByRole("button", { name: /New Post/ }).click();
   await page.getByPlaceholder("Title").fill(title);
   await page.getByPlaceholder("Content").fill("Automated test post");
+  await page.getByLabel("Skill").selectOption("Piano");
+  await page.getByLabel("Hours studied").fill("1.5");
   await page.getByLabel("Visibility").selectOption("Friends-Only");
   await page.getByRole("button", { name: "Publish" }).click();
   await expect(page.getByText(title)).toBeVisible();
 });
-

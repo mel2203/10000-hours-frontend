@@ -17,6 +17,8 @@ export default function PostCard({ post }) {
               <span className="post-date">
                 {new Date(post.created_at).toLocaleDateString()}
               </span>
+              {post.skill && <span className="skill-tag">{post.skill}</span>}
+              {post.hours != null && <span className="post-hours">{Number(post.hours).toLocaleString(undefined, { maximumFractionDigits: 2 })} hrs</span>}
               <span
                 className={`visibility-badge ${
                   String(post.visibility).toLowerCase() === "public"

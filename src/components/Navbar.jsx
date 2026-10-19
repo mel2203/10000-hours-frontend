@@ -12,7 +12,7 @@ export default function Navbar({ onNewPost }) {
 
   return (
     <aside className="sidebar">
-      <div className="brand">10,000 Hours</div>
+      <img className="brand-logo" src="/10000-hours-logo.png" alt="10,000 Hours" />
       <button type="button" className="new-post-btn" onClick={onNewPost}>
         + New Post
       </button>
@@ -21,6 +21,8 @@ export default function Navbar({ onNewPost }) {
           Progress
         </NavLink>
         <NavLink to={`/profile/${userId}`}>My Profile</NavLink>
+        <NavLink to="/leaderboard">Leaderboard</NavLink>
+        <NavLink to="/friends">Friends</NavLink>
       </nav>
       <button type="button" className="logout-btn" onClick={handleLogout}>
         Log out

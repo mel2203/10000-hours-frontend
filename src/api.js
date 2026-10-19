@@ -35,7 +35,30 @@ export const createProfile = (body) =>
 
 export const getPosts = () => request("/posts");
 
+export const getSkills = () => request("/skills");
+
+export const getMyStats = () => request("/stats/me");
+
+export const getLeaderboard = (skill) =>
+  request(`/leaderboard${skill ? `?skill=${encodeURIComponent(skill)}` : ""}`);
+
 export const getProfile = (userId) => request(`/profiles/${userId}`);
+
+export const updateProfile = (body) =>
+  request("/profiles", { method: "PATCH", body: JSON.stringify(body) });
+
+export const getFriends = () => request("/friends");
+
+export const getFriendRequests = () => request("/friend/requests");
+
+export const sendFriendRequest = (friend_id) =>
+  request("/friend", { method: "POST", body: JSON.stringify({ friend_id }) });
+
+export const acceptFriendRequest = (friend_id) =>
+  request("/friend/accept", { method: "PATCH", body: JSON.stringify({ friend_id }) });
+
+export const removeFriend = (friend_id) =>
+  request(`/friend/${friend_id}`, { method: "DELETE" });
 
 export const createPost = (body) =>
   request("/posts", { method: "POST", body: JSON.stringify(body) });
