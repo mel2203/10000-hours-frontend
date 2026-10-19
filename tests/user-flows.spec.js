@@ -33,11 +33,11 @@ test("logged-out user is redirected to login", async ({ page }) => {
 test("user can create a post and see it in the feed", async ({ page }) => {
   await login(page);
   const title = `Test post ${Date.now()}`;
+  await page.getByRole("button", { name: /New Post/ }).click();
   await page.getByPlaceholder("Title").fill(title);
   await page.getByPlaceholder("Content").fill("Automated test post");
   await page.getByLabel("Visibility").selectOption("Friends-Only");
-  await page.getByRole("button", { name: "Post", exact: true }).click();
+  await page.getByRole("button", { name: "Publish" }).click();
   await expect(page.getByText(title)).toBeVisible();
 });
-
 

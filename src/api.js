@@ -40,5 +40,21 @@ export const getProfile = (userId) => request(`/profiles/${userId}`);
 export const createPost = (body) =>
   request("/posts", { method: "POST", body: JSON.stringify(body) });
 
+export async function uploadImage(file) {
+  const token = localStorage.getItem("token");
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const res = await fetch(`${API_URL}/upload`, {
+    method: "POST",
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+    body: formData,
+  });
+  const data = await res.json();
+
+  if (!res.ok) throw new Error(data.error || "Something went wrong");
+  return data.image_url;
+}
+
 export const googleLogin = (access_token) =>
   request("/auth/google", { method: "POST", body: JSON.stringify({ access_token }) });
