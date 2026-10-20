@@ -1,17 +1,71 @@
-# React + Vite
+# 📚 10,000 Hours Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Welcome to 10,000 Hours!** A community where learners share their study sessions, celebrate small wins, and keep moving toward mastery.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🔐 Email/password signup and login, plus Google sign-in.
+- 📝 Study feed with post images, skills, study hours, and visibility controls.
+- 📈 Progress statistics, streaks, and a skill breakdown—see how your practice adds up.
+- 🖼️ Editable profiles with profile pictures.
+- 🤝 Friends, friend requests, and a skill-filtered leaderboard.
 
-## React Compiler
+## 🧰 Requirements
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js and npm.
+- The 10,000 Hours Express API.
+- Supabase project credentials for Google sign-in.
+- A supportive attitude and curiosity. :D
 
-## Expanding the ESLint configuration
+## 🚀 Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Install dependencies:
+
+```sh
+npm install
+```
+
+Create a `.env` file in the project root. Add your local API and Supabase project settings:
+
+```env
+VITE_API_URL=http://localhost:3000
+VITE_SUPABASE_URL=your-supabase-project-url
+VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+```
+
+Use the deployed API URL for `VITE_API_URL` when working against the hosted backend. Never commit `.env` or service-role credentials.
+
+Start the development server:
+
+```sh
+npm run dev
+```
+
+Vite serves the app at `http://localhost:5173` by default.
+
+## 🧪 Available scripts
+
+```sh
+npm run dev      # start the development server
+npm run build    # create a production build in dist/
+npm run preview  # preview the production build
+npm run lint     # run ESLint
+npm test         # run Playwright browser tests
+```
+
+The Playwright tests use `TEST_EMAIL` and `TEST_PASSWORD` from the environment or `.env` for the test account. The account must exist on the configured backend.
+
+## 🧭 Main routes
+
+| Route          | Purpose                               |
+| -------------- | ------------------------------------- |
+| `/login`       | Sign in with email/password or Google |
+| `/signup`      | Create an account and profile         |
+| `/`            | Study feed and progress summary       |
+| `/profile/:id` | View or edit a learner profile        |
+| `/friends`     | Friends and incoming requests         |
+| `/leaderboard` | Public study-hours rankings           |
+
+## 🌱 Happy studying!
+
 
