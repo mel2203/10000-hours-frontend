@@ -60,6 +60,9 @@ export const acceptFriendRequest = (friend_id) =>
 export const removeFriend = (friend_id) =>
   request(`/friend/${friend_id}`, { method: "DELETE" });
 
+export const searchProfiles = (query) =>
+  request(`/profiles?search=${encodeURIComponent(query)}`);
+
 export const createPost = (body) =>
   request("/posts", { method: "POST", body: JSON.stringify(body) });
 

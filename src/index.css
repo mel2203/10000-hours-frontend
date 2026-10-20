@@ -1480,3 +1480,9 @@ textarea:focus {
     justify-content: flex-start;
   }
 }
+
+/* friends page */
+.friend-section{margin-top:28px}
+.friend-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:6px}
+.friend-row p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.friend-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding: 4px;}
