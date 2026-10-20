@@ -36,13 +36,11 @@ export default function Signup() {
   return (
     <main className="auth-page">
       <section className="auth-brand">
-        <svg className="book-logo auth-book-logo" viewBox="0 0 40 36" aria-hidden="true">
-          <path d="M20 10C15 5 8 5 3 7v22c6-2 12-1 17 4m0-23c5-5 12-5 17-3v22c-6-2-12-1-17 4m0-23v23" />
-          <circle cx="20" cy="4" r="2" />
-          <path d="M20 3v1l1 .6" />
-        </svg>
-        <p className="auth-wordmark">10,000 Hours</p>
-        <p className="auth-tagline">A little progress, every day.</p>
+        <img
+          className="auth-logo"
+          src="/10000-hours-logo.png"
+          alt="10,000 Hours"
+        />
       </section>
       <section className="auth-card">
         <h1 className="page-title">Sign up</h1>
