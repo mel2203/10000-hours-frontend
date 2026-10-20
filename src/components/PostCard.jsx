@@ -6,9 +6,13 @@ export default function PostCard({ post }) {
     <article className="post-card">
       <header className="post-header">
         <div className="post-author">
-          <span className="post-avatar" aria-hidden="true">
-            {(post.username || "Unknown").charAt(0).toUpperCase()}
-          </span>
+          {post.avatar_url ? (
+            <img className="post-avatar" src={post.avatar_url} alt="" />
+          ) : (
+            <span className="post-avatar" aria-hidden="true">
+              {(post.username || "Unknown").charAt(0).toUpperCase()}
+            </span>
+          )}
           <div>
             <Link className="post-author-name" to={`/profile/${post.user_id}`}>
               {post.username || "Unknown"}

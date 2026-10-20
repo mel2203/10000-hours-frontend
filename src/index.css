@@ -154,7 +154,7 @@ textarea {
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 4px;
-  color: var(--text);
+  color: var(--white);
   background: var(--bg);
   font: 400 1rem "Lora", Georgia, serif;
 }
@@ -162,7 +162,7 @@ textarea {
 .form-input::placeholder,
 input::placeholder,
 textarea::placeholder {
-  color: var(--muted);
+  color: var(--line);
   opacity: 1;
 }
 
@@ -236,7 +236,7 @@ textarea:focus {
 
 .auth-switch {
   margin: 1.5rem 0 0;
-  color: var(--muted);
+  color: var(--white);
    text-align: center;
 }
 
@@ -1371,6 +1371,49 @@ textarea:focus {
 .profile-action-error {
   margin: 0.75rem 0 0;
   color: var(--danger);
+}
+
+/* Profile pictures stay round, cropped cleanly, and readable beside profile details. */
+.profile-avatar-display,
+.profile-avatar-editor {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-avatar-image,
+.profile-avatar-fallback {
+  display: grid;
+  width: 88px;
+  height: 88px;
+  flex: 0 0 88px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  object-fit: cover;
+  color: var(--text);
+  background: var(--bg-deep);
+  font: 700 36px "Cormorant Garamond", Georgia, serif;
+}
+
+.profile-avatar-editor {
+  margin-bottom: 0.5rem;
+}
+
+.profile-avatar-editor > div {
+  display: grid;
+  min-width: 0;
+  gap: 0.45rem;
+}
+
+.profile-edit-form .profile-avatar-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.post-avatar:where(img) {
+  object-fit: cover;
 }
 
 .friends-heading {
