@@ -6,9 +6,13 @@
   --line: #2C3E5A;
   --text: #F3EBDD;
   --muted: #B9AE9B;
-  --gold: #B08D57;
-  --gold-light: #E3C48F;
-  --brown: #8A5E37;
+  --accent: #78A99B;
+  --accent-hover: #9AC6B8;
+  --success: #6FA38A;
+  --danger: #C46B6B;
+  --gold: #F3EBDD;
+  --gold-light: #FFFFFF;
+  --brown: #48566A;
   color: var(--text);
   background: var(--bg);
   font-family: "Lora", Georgia, serif;
@@ -150,7 +154,7 @@ textarea {
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 4px;
-  color: var(--text);
+  color: var(--white);
   background: var(--bg);
   font: 400 1rem "Lora", Georgia, serif;
 }
@@ -158,7 +162,7 @@ textarea {
 .form-input::placeholder,
 input::placeholder,
 textarea::placeholder {
-  color: var(--muted);
+  color: var(--line);
   opacity: 1;
 }
 
@@ -187,6 +191,7 @@ textarea:focus {
   padding: 3rem 1.5rem;
   background: var(--card);
   text-align: center;
+
 }
 
 .auth-book-logo {
@@ -202,11 +207,7 @@ textarea:focus {
   white-space: nowrap;
 }
 
-.auth-tagline {
-  margin-bottom: 0;
-  color: var(--muted);
-  font: 600 1.55rem "Cormorant Garamond", Georgia, serif;
-}
+
 
 .auth-card {
   display: flex;
@@ -221,6 +222,7 @@ textarea:focus {
 
 .auth-card .page-title {
   margin-bottom: 1.5rem;
+   text-align: center;
 }
 
 .auth-form {
@@ -234,11 +236,13 @@ textarea:focus {
 
 .auth-switch {
   margin: 1.5rem 0 0;
-  color: var(--muted);
+  color: var(--white);
+   text-align: center;
 }
 
 .auth-switch a {
   color: var(--gold-light);
+ text-align: center;
 }
 
 /* The navbar pairs an inline book mark with understated page links. */
@@ -607,6 +611,313 @@ textarea:focus {
   background: var(--gold);
 }
 
+/* Study stats keep progress, counts, and the skill breakdown easy to scan. */
+.stats-panel {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+}
+
+.stats-panel .section-title {
+  margin-bottom: 1.1rem;
+}
+
+.stats-primary {
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.stats-label,
+.stats-grid dt,
+.muted-copy {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.stats-label {
+  margin-bottom: 0.3rem;
+}
+
+.stats-total {
+  margin-bottom: 0.8rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.stats-total span,
+.stats-grid dd {
+  color: var(--text);
+  font-size: 1.45rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-track,
+.skill-bar-track {
+  display: block;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 99px;
+  background: var(--bg-deep);
+  accent-color: var(--accent);
+}
+
+.progress-track::-webkit-progress-bar,
+.skill-bar-track::-webkit-progress-bar {
+  border-radius: 99px;
+  background: var(--bg-deep);
+}
+
+.progress-track::-webkit-progress-value,
+.skill-bar-track::-webkit-progress-value {
+  border-radius: 99px;
+  background: var(--accent);
+}
+
+.progress-track::-moz-progress-bar,
+.skill-bar-track::-moz-progress-bar {
+  border-radius: 99px;
+  background: var(--accent);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  margin: 1rem 0 0;
+}
+
+.stats-grid div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.stats-grid dt,
+.stats-grid dd {
+  margin: 0;
+}
+
+.stats-grid dd {
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.stats-encouragement {
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.by-skill {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.by-skill h3 {
+  margin-bottom: 1rem;
+  font-size: 1.45rem;
+}
+
+.skill-stats-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-stats-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.88rem;
+}
+
+.skill-stats-heading span:last-child {
+  color: var(--muted);
+  text-align: right;
+}
+
+.skill-bar-track {
+  height: 7px;
+}
+
+.state-card {
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  background: var(--card);
+}
+
+.error-text {
+  color: var(--danger);
+}
+
+/* Skill chips and post tags keep filtering and study details compact. */
+.skill-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.2rem 0 1.5rem;
+}
+
+.filter-chip {
+  min-height: 40px;
+  padding: 0.35rem 0.85rem;
+  border-color: var(--line);
+  color: var(--text);
+  background: var(--card);
+  font: 400 0.9rem "Lora", Georgia, serif;
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+  border-color: var(--accent);
+  color: var(--text);
+  background: #26354A;
+}
+
+.skill-tag {
+  padding: 0.12rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  color: var(--accent-hover);
+}
+
+.post-hours {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The feed and leaderboard use bordered panels and readable data tables. */
+.content {
+  max-width: none;
+}
+
+.feed-page {
+  width: min(100%, 1280px);
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 2rem;
+}
+
+.feed-main {
+  min-width: 0;
+}
+
+.feed-stats {
+  position: sticky;
+  top: 1.5rem;
+}
+
+.profile-page > .stats-panel {
+  margin-bottom: 2.25rem;
+}
+
+.leaderboard-page {
+  max-width: 1000px;
+}
+
+.leaderboard-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.leaderboard-filter {
+  display: grid;
+  width: min(100%, 260px);
+  gap: 0.45rem;
+  color: var(--muted);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.leaderboard-table thead {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.leaderboard-table tbody tr:last-child th,
+.leaderboard-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.leaderboard-table td:nth-child(n + 3) {
+  font-variant-numeric: tabular-nums;
+}
+
+.leaderboard-table .current-user-row {
+  background: #203049;
+}
+
+.current-user-label {
+  margin-left: 0.55rem;
+  color: var(--accent-hover);
+  font-size: 0.78rem;
+}
+
+/* Feed stats and leaderboard headings stack cleanly on narrow screens. */
+@media (max-width: 900px) {
+  .feed-page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .feed-stats {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .leaderboard-heading {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .leaderboard-filter {
+    width: 100%;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: 0.75rem 0.6rem;
+    font-size: 0.86rem;
+  }
+
+  .stats-panel {
+    padding: 1.15rem;
+  }
+}
+
 .content {
   width: 100%;
   max-width: 900px;
@@ -695,6 +1006,13 @@ textarea:focus {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .brand-logo {
+    width: 88px;
+    max-height: 88px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
   .sidebar {
     position: relative;
     display: grid;
@@ -744,5 +1062,421 @@ textarea:focus {
 
   .content {
     padding: clamp(1rem, 4vw, 2rem);
+  }
+}
+
+/* A consistent sans-serif system makes the interface quieter and easier to scan. */
+:root {
+  --font-ui: "DM Sans", Arial, sans-serif;
+  font-family: var(--font-ui);
+}
+
+body,
+button,
+input,
+select,
+textarea,
+.post-title,
+.filter-chip,
+.post-avatar,
+.hours-number {
+  font-family: var(--font-ui);
+}
+
+body {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+/* Shared surfaces use subtle borders, even spacing, and restrained corners. */
+.layout {
+  grid-template-columns: 248px minmax(0, 1fr);
+}
+
+.content {
+  max-width: none;
+  padding: clamp(1.5rem, 3.5vw, 3.5rem);
+}
+
+.page-title {
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  letter-spacing: -0.045em;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  letter-spacing: -0.025em;
+}
+
+.profile-card,
+.post-card,
+.stats-panel,
+.modal,
+.table-scroll {
+  border-color: var(--line);
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.profile-card,
+.post-card,
+.stats-panel,
+.modal {
+  background: var(--card);
+}
+
+.post-card {
+  padding: 1.35rem;
+}
+
+.auth-tagline {
+  font: 500 1.1rem/1.5 var(--font-ui);
+  letter-spacing: 0;
+}
+
+.post-title {
+  max-width: 55%;
+  padding: 0;
+  color: var(--text);
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-transform: none;
+}
+
+/* Buttons and fields share a clear, low-noise interaction style. */
+button,
+.primary-button {
+  min-height: 42px;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  font: 600 0.9rem var(--font-ui);
+}
+
+button:hover,
+.primary-button:hover {
+  border-color: var(--accent-hover);
+  background: var(--accent-hover);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+input,
+select,
+textarea {
+  min-height: 46px;
+  border-radius: 6px;
+  background: var(--bg-deep);
+  font: 400 0.95rem var(--font-ui);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-hover);
+  outline: 2px solid rgb(120 169 155 / 35%);
+}
+
+.auth-logo {
+  display: block;
+  width: min(100%, 420px);
+  height: auto;
+  margin-bottom: 1.25rem;
+  mix-blend-mode: screen;
+}
+
+.modal form {
+  gap: 0.75rem;
+}
+
+.modal label {
+  margin-bottom: -0.25rem;
+  font-size: 0.88rem;
+}
+
+/* Navigation and post metadata use restrained active states and plain text. */
+.sidebar {
+  gap: 1.1rem;
+  padding: 1.5rem 1rem;
+}
+
+.brand {
+  font-size: 30px;
+}
+
+.brand-logo {
+  display: block;
+  width: min(100%, 172px);
+  height: auto;
+  mix-blend-mode: screen;
+}
+
+.sidebar nav a {
+  border-radius: 6px;
+  border-left: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  border-left-color: transparent;
+  color: var(--text);
+  background: #203049;
+}
+
+.post-meta {
+  font-size: 0.8rem;
+}
+
+.skill-tag {
+  color: var(--accent-hover);
+}
+
+.post-hours {
+  color: var(--muted);
+}
+
+.filter-chip {
+  border-radius: 6px;
+  font: 500 0.85rem var(--font-ui);
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+  color: var(--text);
+  background: #26354A;
+}
+
+/* Small screens retain comfortable spacing without squeezing the content. */
+@media (max-width: 800px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .content {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .auth-logo {
+    width: min(78vw, 320px);
+  }
+
+  .post-card {
+    padding: 1rem;
+  }
+
+  .post-title {
+    max-width: 100%;
+  }
+}
+
+/* The welcome board introduces the community with a calm teal highlight. */
+.welcome-board {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  background: linear-gradient(120deg, #1B2B3D 0%, var(--card) 65%);
+}
+
+.welcome-eyebrow {
+  margin-bottom: 0.6rem;
+  color: var(--accent-hover);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.welcome-board h2 {
+  margin-bottom: 0.65rem;
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  letter-spacing: -0.035em;
+}
+
+.welcome-board > p:last-child {
+  max-width: 68ch;
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Profile editing and friend lists use the same restrained panel styling. */
+.profile-card-heading,
+.profile-actions,
+.person-row,
+.person-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.profile-card-heading > div {
+  min-width: 0;
+}
+
+.profile-edit-form {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.profile-edit-form .page-title {
+  margin-bottom: 0.4rem;
+}
+
+.profile-edit-form label {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.profile-edit-form textarea {
+  resize: vertical;
+}
+
+.profile-actions {
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
+
+.secondary-button {
+  border-color: var(--line);
+  color: var(--text);
+  background: transparent;
+}
+
+.secondary-button:hover {
+  border-color: var(--accent);
+  background: #203049;
+}
+
+.profile-action-error {
+  margin: 0.75rem 0 0;
+  color: var(--danger);
+}
+
+/* Profile pictures stay round, cropped cleanly, and readable beside profile details. */
+.profile-avatar-display,
+.profile-avatar-editor {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-avatar-image,
+.profile-avatar-fallback {
+  display: grid;
+  width: 88px;
+  height: 88px;
+  flex: 0 0 88px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  object-fit: cover;
+  color: var(--text);
+  background: var(--bg-deep);
+  font: 700 36px "Cormorant Garamond", Georgia, serif;
+}
+
+.profile-avatar-editor {
+  margin-bottom: 0.5rem;
+}
+
+.profile-avatar-editor > div {
+  display: grid;
+  min-width: 0;
+  gap: 0.45rem;
+}
+
+.profile-edit-form .profile-avatar-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.post-avatar:where(img) {
+  object-fit: cover;
+}
+
+.friends-heading {
+  margin-bottom: 2rem;
+}
+
+.friends-heading .page-intro {
+  color: var(--muted);
+}
+
+.friends-section {
+  margin-bottom: 2rem;
+}
+
+.people-list {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  list-style: none;
+}
+
+.person-row {
+  min-height: 76px;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.person-row:last-child {
+  border-bottom: 0;
+}
+
+.person-name {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.person-name:hover {
+  color: var(--accent-hover);
+}
+
+.person-detail {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.person-actions {
+  justify-content: flex-end;
+}
+
+@media (max-width: 520px) {
+  .profile-card-heading,
+  .person-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .person-actions {
+    width: 100%;
+    justify-content: flex-start;
   }
 }

@@ -7,6 +7,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import "./index.css";
 import AuthCallback from "./pages/AuthCallback";
+import Leaderboard from "./pages/Leaderboard";
+import Friends from "./pages/Friends";
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
       >
         <Route index element={<Feed />} />
         <Route path="profile/:id" element={<Profile />} />
+        <Route path="leaderboard" element={<Leaderboard />} />
+        <Route path="friends" element={<Friends />} />
       </Route>
     </Routes>
   );
