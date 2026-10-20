@@ -1,0 +1,53 @@
+Attached Element Context from Integrated Browser
+
+Element: p.auth-switch
+
+URL: http://localhost:5173/login
+
+HTML Path: div#root > div.auth-page > section.auth-card > p.auth-switch
+
+Outer HTML:
+```html
+<p class="auth-switch">New here? <a href="/signup" data-discover="true">Sign up</a></p>
+```
+
+Dimensions:
+- top: 455px
+- left: 526px
+- width: 357px
+- height: 48px
+
+CSS:
+```css
+* { box-sizing: border-box; }
+h1, h2, h3, p { margin-top: 0; }
+.auth-switch { margin: 1.5rem 0 0;
+  color: var(--muted); }
+
+/* Inherited */
+body { color: var(--text); font-family: "Lora", Georgia, serif; font-size: 1rem; line-height: 1.55 }
+body, button, input, select, textarea, .post-title, .filter-chip, .post-avatar, .hours-number { font-family: var(--font-ui) }
+body { font-size: 0.95rem; line-height: 1.6 }
+:root { color: var(--text); font-family: "Lora", Georgia, serif }
+
+/* Resolved values */
+margin: 24px 0px 0px;
+box-sizing: border-box;
+color: rgb(185, 174, 155);
+display: block;
+font-family: "DM Sans", Arial, sans-serif;
+font-size: 15.2px;
+height: 24.3125px;
+line-height: 24.32px;
+margin-block-end: 0px /*UA*/;
+margin-block-start: 24px /*UA*/;
+margin-inline-end: 0px /*UA*/;
+margin-inline-start: 0px /*UA*/;
+unicode-bidi: isolate /*UA*/;
+width: 357.208px;
+
+/* CSS variables */
+--muted: #B9AE9B;
+--text: #F3EBDD;
+--font-ui: "DM Sans", Arial, sans-serif;
+```
